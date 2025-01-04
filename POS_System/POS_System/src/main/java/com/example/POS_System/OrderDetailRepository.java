@@ -1,4 +1,4 @@
-package com.example.POS_System.Repository;
+package com.example.POS_System;
 
 
 import com.example.POS_System.OrderDetail;
