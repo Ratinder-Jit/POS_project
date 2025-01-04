@@ -1,9 +1,11 @@
 package com.example.POS_System;
 
 import jakarta.persistence.*;
+import org.aspectj.weaver.ast.Or;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -15,7 +17,16 @@ public class Order {
 
     private LocalDate orderDate;
 
+//    @ManyToOne
+//    @JoinColumn(name = "customerId",referencedColumnName = "customerId", nullable = false)
+//    private Customer customer;
+//
+//    @OneToMany
+//    private List<OrderDetail> orderDetails
+
     private BigDecimal totalAmount = BigDecimal.ZERO;
+
+
 
     public Order() {
     }

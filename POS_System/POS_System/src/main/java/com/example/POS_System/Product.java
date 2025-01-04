@@ -10,59 +10,59 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
-    private Double price;
-    private Integer stock;
+    private long productId;
+    private String productName;
+    private Double productPrice;
+    private Integer productStock;
 
     public Product() {
     }
 
-    public Product(String name, Double price, Integer stock) {
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
+    public Product(String productName, Double productPrice, Integer productStock) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productStock = productStock;
     }
 
-    public long getId() {
-        return id;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public Double getPrice() {
-        return price;
+    public Double getProductPrice() {
+        return productPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setProductPrice(Double productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public Integer getStock() {
-        return stock;
+    public Integer getProductStock() {
+        return productStock;
     }
 
-    public void setStock(Integer stock) {
-        this.stock = stock;
+    public void setProductStock(Integer productStock) {
+        this.productStock = productStock;
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", stock=" + stock +
+                "id=" + productId +
+                ", name='" + productName + '\'' +
+                ", price=" + productPrice +
+                ", stock=" + productStock +
                 '}';
     }
 }

@@ -1,10 +1,8 @@
 package com.example.POS_System;
 
-import org.aspectj.lang.annotation.DeclareError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 @RestController
@@ -32,9 +30,9 @@ public class ProductController {
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable long id, @RequestBody Product updatedProduct){
         Product product = productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not found!"));
-        product.setName(updatedProduct.getName());
-        product.setPrice(updatedProduct.getPrice());
-        product.setStock(updatedProduct.getStock());
+        product.setProductName(updatedProduct.getProductName());
+        product.setProductPrice(updatedProduct.getProductPrice());
+        product.setProductStock(updatedProduct.getProductStock());
         return productRepository.save(product);
     }
 
