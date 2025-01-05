@@ -1,10 +1,11 @@
 package com.example.POS_System;
 
-import com.example.POS_System.Entity.OrderDetailPk;
+import com.example.POS_System.OrderDetailPk;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
+@Entity
 public class OrderDetail {
 
     @Id
@@ -15,13 +16,12 @@ public class OrderDetail {
     private BigDecimal price = BigDecimal.ZERO;
 
     @ManyToOne
-    @JoinColumn(name = "orderId", referencedColumnName = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name = "orderId", referencedColumnName = "orderId", insertable = false, updatable = false) // Reference the orderId from Order
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false)
+    @JoinColumn(name = "productId", referencedColumnName = "productId", insertable = false, updatable = false) // Reference the productId from Product
     private Product product;
-
     public OrderDetail() {
     }
     public OrderDetail(OrderDetailPk orderDetailPK, int qty, BigDecimal unitPrice) {
@@ -30,7 +30,7 @@ public class OrderDetail {
         this.setPrice(unitPrice);
     }
 
-    public OrderDetail(String orderId, String productId, int qty, BigDecimal unitPrice) {
+    public OrderDetail(long orderId, long productId, int qty, BigDecimal unitPrice) {
         this.setOrderDetailPk(new OrderDetailPk(orderId,productId));
         this.setQuantity(qty);
         this.setPrice(unitPrice);

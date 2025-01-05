@@ -33,9 +33,9 @@ public class OrderController {
     public Order updateOrder(@PathVariable long id, @RequestBody Order updatedOrder){
         Order order = orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found!"));
         order.setOrderDate(updatedOrder.getOrderDate());
-        order.setTotalAmount(updatedOrder.getTotalAmount());
-//        order.setCustomer(updatedOrder.getCustomer());
-//        order.setOrderDetails(updatedOrder.getOrderDetails());
+//        order.setTotalAmount(updatedOrder.getTotalAmount());
+        order.setCustomer(updatedOrder.getCustomer());
+        order.setOrderDetails(updatedOrder.getOrderDetails());
         return orderRepository.save(order);
     }
 

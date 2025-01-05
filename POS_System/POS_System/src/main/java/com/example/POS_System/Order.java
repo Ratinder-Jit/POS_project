@@ -17,23 +17,23 @@ public class Order {
 
     private LocalDate orderDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customerId",referencedColumnName = "customerId", nullable = false)
-//    private Customer customer;
-//
-//    @OneToMany
-//    private List<OrderDetail> orderDetails
+    @ManyToOne
+    @JoinColumn(name = "customerId",referencedColumnName = "customerId", nullable = false)
+    private Customer customer;
 
-    private BigDecimal totalAmount = BigDecimal.ZERO;
+    @OneToMany
+    private List<OrderDetail> orderDetails;
+
+//    private BigDecimal totalAmount = BigDecimal.ZERO;
 
 
 
     public Order() {
     }
 
-    public Order(LocalDate orderDate, BigDecimal totalAmount) {
+    public Order(LocalDate orderDate, Customer customer) {
         this.orderDate = orderDate;
-        this.totalAmount = totalAmount;
+        this.customer = customer;
     }
 
     public long getOrderId() {
@@ -52,12 +52,37 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
+//    public BigDecimal getTotalAmount() {
+//        return totalAmount;
+//    }
+//
+//    public void setTotalAmount(BigDecimal totalAmount) {
+//        this.totalAmount = totalAmount;
+//    }
+
+
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        for (OrderDetail orderDetail : orderDetails) {
+            orderDetail.setOrder(this);
+        }
+        this.orderDetails = orderDetails;
+    }
+
+    public void addOrderDetail(OrderDetail orderDetail){
+        orderDetail.setOrder(this);
+        this.getOrderDetails().add(orderDetail);
     }
 
     @Override
@@ -65,7 +90,8 @@ public class Order {
         return "Order{" +
                 "orderId=" + orderId +
                 ", orderDate=" + orderDate +
-                ", totalAmount=" + totalAmount +
+                ", customer=" + customer +
+                ", orderDetails=" + orderDetails +
                 '}';
     }
 }
